@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using OAuth_Implementation.DAL;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+string connectionString = builder.Configuration.GetConnectionString("AuthDbConnection");
+builder.Services.AddEntityFrameworkNpgsql().AddDbContext<ApiDbContext>(opt =>
+    opt.UseNpgsql(connectionString)
+);
 
 var app = builder.Build();
 
