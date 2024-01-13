@@ -7,13 +7,23 @@ namespace OAuth_Implementation.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
-    {
-       // Test Method
-       [HttpGet]
-       public string Get()
+    {   
+        // Test Method
+        [HttpGet]
+        public string Get()
         {
             return DateTime.Now.ToString();
         }
+
+        //register
+
+        //login
+
+        //logout
+
+        //refresh
+
+        //delete user
         /* TODO delete this
         // GET: api/<AuthController>
         [HttpGet]
