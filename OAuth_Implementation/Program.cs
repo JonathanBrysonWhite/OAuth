@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using OAuth_Implementation.DAL;
+using OAuth_Implementation.Persistence;
 
 
 var builder = WebApplication.CreateBuilder(args);

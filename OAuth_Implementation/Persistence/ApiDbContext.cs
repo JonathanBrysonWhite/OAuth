@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OAuth_Implementation.Models;
-namespace OAuth_Implementation.DAL
+namespace OAuth_Implementation.Persistence
 {
     public class ApiDbContext : DbContext
     {

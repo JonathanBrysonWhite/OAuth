@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using OAuth_Implementation.Persistence;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace OAuth_Implementation.Controllers
@@ -7,16 +7,26 @@ namespace OAuth_Implementation.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
-    {   
+    {
+        private ApiDbContext _context;
+        public AuthController(ApiDbContext context)
+        {
+            _context = context;
+        }
+
         // Test Method
-        [HttpGet]
+        [HttpGet("echo")]
         public string Get()
         {
             return DateTime.Now.ToString();
         }
 
         //register
-
+        [HttpPost("register")]
+        public void Post([FromBody] string username, string password)
+        {
+            
+        }
         //login
 
         //logout
