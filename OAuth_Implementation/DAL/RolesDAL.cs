@@ -21,5 +21,18 @@ namespace OAuth_Implementation.DAL
                 return new List<string>();
             return role.Scopes.Select(x => x.Name).ToList();
         }
+
+        public static bool ScopeInUseByAnyRole(DbSet<Role> roles, Scope scope)
+        {
+            try
+            {
+                return roles.Any(x => x.Scopes.Contains(scope));
+            }
+            catch
+            {
+                //cannot verify, return true
+                return false;
+            }
+        }
     }
 }

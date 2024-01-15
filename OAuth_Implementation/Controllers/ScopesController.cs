@@ -40,6 +40,7 @@ namespace OAuth_Implementation.Controllers
             }
         }
 
+
         [HttpPost]
         public async Task<IActionResult> Post([FromQuery(Name = "name")] string name)
         {
@@ -63,6 +64,26 @@ namespace OAuth_Implementation.Controllers
                     return BadRequest();
                 }
                 return Created(new Uri(uri), result.Item2);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery(Name = "name")] string name)
+        {
+            try
+            {
+                Scope? scope = await ScopesDAL.GetScope(_context.Scopes, name);
+                if (scope is null)
+                    return NotFound();
+                if (RolesDAL.ScopeInUseByAnyRole(_context.Roles, scope))
+                    return Conflict("Scope is currently in use");
+                if (!await ScopesDAL.RemoveScope(_context, name))
+                    return StatusCode(StatusCodes.Status500InternalServerError);
+                return Ok();
             }
             catch
             {
