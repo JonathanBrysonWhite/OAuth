@@ -19,5 +19,8 @@ https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
 1. Create DAL 
 2. Create database w/ scripts
 3. Add JWT middleware
-4. 
+3. b. Add Basic auth middleware - allow interop depending on env variable 
+4. Add client id & client secret - research
+5. Add optional configurable email / phone num requirements w/ challenge
+6. Authenticator app integration
 
